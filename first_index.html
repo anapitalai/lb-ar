@@ -5,6 +5,46 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+
+</head>
+
+<body style='margin : 0px; overflow: hidden;'>
+  <script>  
+          AFRAME.registerComponent('locationfinder',{
+        init:function() {
+            navigator.geolocation.getCurrentPosition(function(position){
+             console.log(position)
+         })
+        }
+    })
+    // "simulateLatitude:-6.6781184;simulateLongitude:147.0005248;"
+  </script>
+    <a-scene
+    vr-mode-ui="enabled: false"
+    arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
+  >
+    <a-text
+      value="Sandover"
+      look-at="[gps-camera]"
+      scale="15 15 15"
+      gps-entity-place="latitude:-6.673296234598212; longitude:146.99258577828653;"
+    ></a-text>
+
+    <a-camera gps-camera rotation-reader> </a-camera>
+  </a-scene>
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
   <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
 <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"> </script>
 
@@ -33,11 +73,11 @@
    position="0 0.15 0" gps-entity-place=" longitude: 146.993136; latitude: -6.673573;">
   </a-entity>
   
-<a-camera locationfinder rotation-reader gps-camera="simulateLatitude:-6.673573;simulateLongitude:146.993136;"> </a-camera>
+<a-camera locationfinder rotation-reader gps-camera="simulateLatitude:-6.673573;simulateLongitude:146.993136;"> 
 <a-text value="Administration"  scale="15 15 15" gps-entity-place="latitude:-6.673594;longitude:146.992106;"></a-text>
 <a-text value="Sandover"  scale="15 15 15" gps-entity-place="latitude:-6.673573;longitude:146.993136;"></a-text>
 <a-text  value="Sandover" align="center" look-at="[gps-camera]" scale="15 15 15" gps-entity-place="latitude:-6.673573;longitude:146.993136;"></a-text>
   
 </a-scene>
 </body>
-</html>
+</html> -->
