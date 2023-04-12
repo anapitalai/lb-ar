@@ -11,20 +11,33 @@
 </head>
 
 <body style='margin : 0px; overflow: hidden;'>
+  <script>  
+          AFRAME.registerComponent('locationfinder',{
+        init:function() {
+            navigator.geolocation.getCurrentPosition(function(position){
+             console.log(position)
+         })
+        }
+    })
+
+  </script>
 
     <a-scene>
    <a-entity id="box1" geometry="primitive:box" material="color:#000;shader:flat" position="0 0.15 -5" rotation="0 45 0">
     <a-animation attribute="rotation" dur="3000" to="360 360 0" repeat="indefinite" easing="linear"></a-animation>
   </a-entity> 
 
-   <!-- <a-entity id="box1" geometry="primitive:sphere" material="color:#011;shader:flat" position="1 0.15 -5" rotation="90 45 0" />  -->
-
    <a-entity
    gltf-model="magnemite/scene.gltf"
    scale="0.012 0.012 0.010"
-   position="0 0.15 0" gps-entity-place="longitude: 146.993136; latitude: -6.673573;">
+   position="0 0.15 0" gps-entity-place=" longitude: 146.993136; latitude: -6.673573;">
   </a-entity>
-
-    </a-scene>
+  
+<a-camera locationfinder rotation-reader gps-camera="simulateLatitude:-6.673573;simulateLongitude:146.993136;"> </a-camera>
+<a-text value="Administration"  scale="15 15 15" gps-entity-place="latitude:-6.673594;longitude:146.992106;"></a-text>
+<a-text value="Sandover"  scale="15 15 15" gps-entity-place="latitude:-6.673573;longitude:146.993136;"></a-text>
+<a-text  value="Sandover" align="center" look-at="[gps-camera]" scale="15 15 15" gps-entity-place="latitude:-6.673573;longitude:146.993136;"></a-text>
+  
+</a-scene>
 </body>
 </html>
