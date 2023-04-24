@@ -1,22 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
-<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"> </script>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <script>
 
-</head>
-
-<body style='margin : 0px; overflow: hidden;'>
-<a-scene embedded arjs>
-    <a-marker preset="hiro">
-        <a-box position="0 0.5 0" material="color:grey;"></a-box>
-    </a-marker>
-    <a-entity camera></a-entity>
-</a-scene>
-
-</body>
+AFRAME.registerComponent('color-toggle', {
+  init:function(){
+    //ref to the compoment this is attached to
+    let el=this.el;
+    console.log('captured el',el)
+    this.toggleColor=function(){
+      
+      el.setAttribute('color','white')
+      // el.setAttribute('height','50%')
+    }
+    this.el.addEventListener('click',this.toggleColor)
+  },
+  remove:function(){
+    this.el.removeEventListener('click',this.toggleColor)
+  }
+})
+    </script>
+    <a-scene cursor="rayOrigin:mouse;">
+      <a-box color-toggle position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
+      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+      <a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+  </body>
 </html>

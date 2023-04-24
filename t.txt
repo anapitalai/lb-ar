@@ -66,3 +66,21 @@ AFRAME.registerComponent('markerhandler', {
             }
         });
 }});
+
+
+
+AFRAME.registerComponent('color-toggle', {
+  init:function(){
+    //ref to the compoment this is attached to
+    let el=this.el;
+    this.toggleColor=function(){
+      alert('Clicked')
+    }
+    this.el.addEventListener('click',this.toggleColor)
+  },
+  remove:function(){
+    this.el.removeEventListener('click',this.toggleColor)
+  }
+})
+
+Intro to WebXR and A-Frame Part 4: Interactions, Raycasting, Components, and Event Listeners
