@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -23,22 +23,21 @@
   </script>
     <a-scene
     vr-mode-ui="enabled: false"
-    arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
-  >
-    <a-text
-      value="Sandover"
+    arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;">
+    <a-camera gps-camera="simulateLatitude=-6.673644956014783; simulateLongitude=146.99323284086455" rotation-reader>
+      <a-text
+      value="SO"
       look-at="[gps-camera]"
       scale="15 15 15"
-      gps-entity-place="latitude:146.9927134830748; longitude:146.9927134830748;"
-    ></a-text>
-
-
-    <a-camera gps-new-camera rotation-reader> </a-camera>
+      look-at="[gps-camera]"
+      gps-entity-place="latitude:-6.673644956014783; longitude:146.99323284086455;"
+    ></a-text>  
+    </a-camera>
   </a-scene>
 </body>
-</html> -->
+</html>
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -80,4 +79,4 @@
   
 </a-scene>
 </body>
-</html>
+</html> -->
