@@ -7,11 +7,17 @@
     <script src="https://unpkg.com/aframe-gps-camera/dist/aframe-gps-camera.min.js"></script>
   </head>
   <body style="margin: 0; overflow: hidden;">
-    <a-scene vr-mode-ui="enabled: false" embedded arjs>
+    <!-- <a-scene vr-mode-ui="enabled: false" embedded arjs>
       <a-camera gps-camera rotation-reader></a-camera>
-      <a-entity gps-entity-place="latitude: 40.748817; longitude: -73.985428;">
+      <a-entity gps-entity-place="latitude: 146.9931488400021; longitude: -6.6733405258926695;">
         <a-box color="red" scale="20 20 20"></a-box>
       </a-entity>
+    </a-scene> -->
+    <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
+        <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
+        <a-entity material='color: red' geometry='primitive: box' gps-new-entity-place="latitude: -6.6733405258926695; longitude: 146.9931488400021" scale="10 10 10"></a-entity>
     </a-scene>
   </body>
 </html>
+
+
