@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Location-based AR</title>
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <script src="https://unpkg.com/aframe-gps-camera/dist/aframe-gps-camera.min.js"></script>
+</head>
+<body style="margin: 0; overflow: hidden;">
+  <a-scene vr-mode-ui="enabled: false" embedded arjs>
+    <a-camera gps-camera rotation-reader></a-camera>
+    <a-entity id="marker" gps-entity-place="latitude:-6.673337695920594; longitude: 146.9926401691074">
+      <a-box color="red" scale="20 20 20"></a-box>
+    </a-entity>
+  </a-scene>
+
+  <script>
+    // Example coordinates (replace with the actual GPS coordinates)
+    var latitude = -6.673337695920594; 
+    var longitude = 146.9926401691074;
+
+    // Function to update the marker position
+    function updateMarkerPosition(latitude, longitude) {
+      var marker = document.getElementById('marker');
+      marker.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude}`);
+    }
+
+    // Get real-time GPS data from the user's device
+    if (navigator.geolocation) {
+      navigator.geolocation.watchPosition(function(position) {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        updateMarkerPosition(latitude, longitude);
+      }, function(error) {
+        console.error('Error getting GPS position: ', error);
+      }, {
+        enableHighAccuracy: true
+      });
+    } else {
+      console.error('Geolocation is not supported by this browser.');
+    }
+  </script>
+</body>
+</html>
