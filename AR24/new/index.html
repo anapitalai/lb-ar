@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Location-based AR</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="https://unpkg.com/aframe-gps-camera/dist/aframe-gps-camera.min.js"></script>
+  </head>
+  <body style="margin: 0; overflow: hidden;">
+    <a-scene vr-mode-ui="enabled: false" embedded arjs>
+      <a-camera gps-camera rotation-reader></a-camera>
+      <a-entity gps-entity-place="latitude: 40.748817; longitude: -73.985428;">
+        <a-box color="red" scale="20 20 20"></a-box>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>
